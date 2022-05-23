@@ -6,7 +6,7 @@ def move_invoices(book_path, sheet_name, json_path, invoices_path):
   # Excel file load
   book = load_workbook(str(book_path))
   
-  if sheet_name == None:
+  if sheet_name == 'None':
     sheet = book.active
   else:
     sheet = book[str(sheet_name)]
@@ -15,18 +15,21 @@ def move_invoices(book_path, sheet_name, json_path, invoices_path):
   with open(json_path) as data:
     data = json.load(data)
 
+  json_keys = list(data.keys())
+
   for row in sheet.iter_rows(min_row=2, values_only=True):
     try:
-      if row[1] == 'Excluido':
-        shutil.move(invoices_path+'FE'+str(row[0])+'.pdf', data['Excluido'])
-      elif row[1] == 'Exentas':
-        shutil.move(invoices_path+'FE'+str(row[0])+'.pdf', data['Exentas'])
-      elif row[1] == 'Reintegros':
-        shutil.move(invoices_path+'FE'+str(row[0])+'.pdf', data['Reintegros'])
+      if row[1] in json_keys:
+        shutil.move(invoices_path+str(row[0])+data['Extension'], data[row[1]])
+        print(str(row[0])+data['Extension']+' movido con exito.')
     except:
-      print('Error')
+      print(str(row[0])+data['Extension']+' no pudo moverse')
 
+book_p      = input("Ingrese la ruta del archivo Excel: ")
+sheet_n     = input("Ingrese el nombre de la hoja: ")
+json_p      = input("Ingrese la ruta del archivo JSON: ")
+invoices_p  = input("Ingrese la ruta de los archivos a ordenar: ")
 
+move_invoices(book_p, sheet_n, json_p, invoices_p)
 
-move_invoices('./book/detalle.xlsx', None, './paths.json', 'C:/Users/auxiliar.tics/Desktop/Facturas/')
 
