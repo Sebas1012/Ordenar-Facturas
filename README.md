@@ -20,15 +20,6 @@ Script en python que permite ordenar facturas por carpetas en base a un archivo 
 
 - Como recomendacion y para llevar un orden, se pueden usar 2 carpetas para ubicar los archivos dentro de la raiz de este codigo, la carpeta llamada book para ubicar el excel y la carpeta llamada invoices para ubicar las facturas sin ordenar. **OJO** *no es necesario que sea asi, los archivos pueden estar en cualquier ruta.*
 
-
-
-## Uso:
-
-- Primero se deben instalar las dependencias usando el comando:
-
-```
-pip install -r requirements.txt
-```
 - El script cuenta con una unica funcion llamada **move_invoices()** la cual recibe 4 parametros obligatorios para su funcionamiento, dichos parametros son:
 
 | Parametro | Definición |
@@ -38,6 +29,21 @@ pip install -r requirements.txt
 | json_path | Recibe un string con la ruta del archivo JSON que contiene las rutas de las carpetas a donde iran las facturas. |
 | invoices_path | Recibe un string con la ruta donde se encuentran las facturas sin ordenar. |
 
+
+
+## Uso:
+
+- Primero se deben instalar las dependencias usando el comando:
+
+```
+pip install -r requirements.txt
+```
+
+- Para ejecutar el script usar el comando:
+
+```
+python main.py
+```
 
 <p align="center">
   <b>Hecho con ❤️ por: Sebastián. </b>
