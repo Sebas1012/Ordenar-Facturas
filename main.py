@@ -15,13 +15,10 @@ def move_invoices(book_path, sheet_name, json_path, invoices_path):
   with open(json_path) as data:
     data = json.load(data)
 
-  json_keys = list(data.keys())
-
   for row in sheet.iter_rows(min_row=2, values_only=True):
     try:
-      if row[1] in json_keys:
-        shutil.move(invoices_path+str(row[0])+data['Extension'], data[row[1]])
-        print(str(row[0])+data['Extension']+' movido con exito.')
+      shutil.move(invoices_path+str(row[0])+data['Extension'], data[row[1]])
+      print(str(row[0])+data['Extension']+' movido con exito.')
     except:
       print(str(row[0])+data['Extension']+' no pudo moverse')
 
