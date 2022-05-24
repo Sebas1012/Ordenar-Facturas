@@ -13,6 +13,7 @@ Script en python que permite ordenar facturas por carpetas en base a un archivo 
 
 ```JSON
   {
+    "Extension": ".pdf",
     "tipo_factura": "Ruta donde se movera la factura"
   }
 ```
